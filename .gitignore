@@ -1,3 +1,5 @@
 .vs/
 Debug/
 CppCLI/Debug/
+WPF/bin
+WPF/obj
