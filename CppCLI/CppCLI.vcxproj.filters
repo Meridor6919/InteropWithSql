@@ -29,6 +29,9 @@
     <ClInclude Include="Sql.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WinAPIWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLI.cpp">
@@ -38,6 +41,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinAPIWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

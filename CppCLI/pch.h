@@ -7,7 +7,11 @@
 #ifndef PCH_H
 #define PCH_H
 
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+
 #include "Sql.h"
-// add headers that you want to pre-compile here
+
+#include <tchar.h>
 
 #endif //PCH_H
