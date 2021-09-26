@@ -1,7 +1,13 @@
 #pragma once
-ref class LoginScreen
+#include "Page.h"
+
+public ref class LoginScreen : public Page
 {
+	void ButtonClicked();
+	void LoginChanged();
+	void PasswordChanged();
+
 public:
-	static WPF::LoginPage^ main_window;
+	void Init() override;
 };
 

@@ -2,6 +2,8 @@
 #include "WinAPIWindow.h"
 #include "LoginScreen.h"
 
+msclr::gcroot<Page^> global_active_page;
+
 LRESULT WinAPIWindow::DefaultMsgProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
 	switch (msg)
@@ -36,7 +38,7 @@ LRESULT WinAPIWindow::EventHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
 		}
 		case WM_CREATE:
 		{
-			GetHWND(hwnd);
+			ConnectWPFLoginPage(hwnd);
 			break;
 		}
 	}
@@ -59,16 +61,17 @@ bool WinAPIWindow::Register()
 	return true;
 }
 
-void WinAPIWindow::GetHWND(HWND parent_window)
+void WinAPIWindow::ConnectWPFLoginPage(HWND parent_window)
 {
-	System::Windows::Interop::HwndSourceParameters^ sourceParams = gcnew System::Windows::Interop::HwndSourceParameters("LogPage", 800, 600);
+	System::Windows::Interop::HwndSourceParameters^ sourceParams = gcnew System::Windows::Interop::HwndSourceParameters("Page", 800, 600);
 	sourceParams->ParentWindow = System::IntPtr(parent_window);
 	sourceParams->WindowStyle = WS_VISIBLE | WS_CHILD;
 	System::Windows::Interop::HwndSource^ source = gcnew System::Windows::Interop::HwndSource(*sourceParams);
 
-	auto myPage = gcnew WPF::LoginPage();
-	LoginScreen::main_window = myPage;
-	source->RootVisual = myPage;
+	global_active_page = gcnew LoginScreen();
+	global_active_page->Init();
+
+	source->RootVisual = global_active_page->page;
 }
 
 bool WinAPIWindow::InitWindow()

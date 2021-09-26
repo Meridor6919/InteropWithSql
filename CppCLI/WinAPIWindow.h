@@ -19,7 +19,7 @@ class WinAPIWindow
 	LRESULT EventHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 	bool Register();
-	void GetHWND(HWND parent_window);
+	void ConnectWPFLoginPage(HWND parent_window);
 
 public:
 	WinAPIWindow(WinAPIWindowDesc desc) : desc(desc) {};
