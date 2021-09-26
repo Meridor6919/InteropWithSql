@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "WinAPIWindow.h"
 #include "LoginPage.h"
+#include "QueryPage.h"
 #include "GlobalData.h"
 
 msclr::gcroot<Page^> global_active_page;
@@ -77,7 +78,7 @@ void WinAPIWindow::ConnectWPFLoginPage(HWND parent_window)
 	sourceParams->WindowStyle = WS_VISIBLE | WS_CHILD;
 	System::Windows::Interop::HwndSource^ source = gcnew System::Windows::Interop::HwndSource(*sourceParams);
 
-	global_active_page = gcnew LoginPage(global_sql_connector, parent_window);
+	global_active_page = gcnew QueryPage(global_sql_connector, parent_window);
 	global_active_page->Init();
 
 	source->RootVisual = global_active_page->page;

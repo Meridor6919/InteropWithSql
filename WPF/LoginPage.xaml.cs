@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace WPF
 {
-	public enum Events
+	public enum LoginPageEvents
 	{
 		LoginChange,
 		PasswordChange,
@@ -28,7 +28,7 @@ namespace WPF
 	{
 		public void DefaultEvent() {}
 		public delegate void EventHandlerDelegate();
-		public EventHandlerDelegate[] event_ptrs = new EventHandlerDelegate[((int)Events.last)];
+		public EventHandlerDelegate[] event_ptrs = new EventHandlerDelegate[((int)LoginPageEvents.last)];
 		
 		public LoginPage()
 		{
@@ -38,10 +38,9 @@ namespace WPF
 			}
 			InitializeComponent();
 		}
-		public void LoginChange(object sender, TextChangedEventArgs e) => event_ptrs[(int)Events.LoginChange]();
-		public void PasswordChange(object sender, TextChangedEventArgs e) => event_ptrs[(int)Events.PasswordChange]();
-		public void ButtonClick(object sender, RoutedEventArgs e) => event_ptrs[(int)Events.ButtonClick]();
-
+		public void LoginChange(object sender, TextChangedEventArgs e) => event_ptrs[(int)LoginPageEvents.LoginChange]();
+		public void PasswordChange(object sender, TextChangedEventArgs e) => event_ptrs[(int)LoginPageEvents.PasswordChange]();
+		public void ButtonClick(object sender, RoutedEventArgs e) => event_ptrs[(int)LoginPageEvents.ButtonClick]();
 		public ref Button GetButton()
 		{
 			return ref Button;
