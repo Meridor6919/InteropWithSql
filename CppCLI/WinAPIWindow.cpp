@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "WinAPIWindow.h"
-#include "LoginScreen.h"
+#include "LoginPage.h"
 
 msclr::gcroot<Page^> global_active_page;
 
@@ -68,7 +68,7 @@ void WinAPIWindow::ConnectWPFLoginPage(HWND parent_window)
 	sourceParams->WindowStyle = WS_VISIBLE | WS_CHILD;
 	System::Windows::Interop::HwndSource^ source = gcnew System::Windows::Interop::HwndSource(*sourceParams);
 
-	global_active_page = gcnew LoginScreen();
+	global_active_page = gcnew LoginPage();
 	global_active_page->Init();
 
 	source->RootVisual = global_active_page->page;

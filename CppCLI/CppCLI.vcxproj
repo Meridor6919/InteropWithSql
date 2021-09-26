@@ -127,7 +127,7 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LoginScreen.h" />
+    <ClInclude Include="LoginPage.h" />
     <ClInclude Include="Page.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
@@ -137,7 +137,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CppCLI.cpp" />
-    <ClCompile Include="LoginScreen.cpp" />
+    <ClCompile Include="LoginPage.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

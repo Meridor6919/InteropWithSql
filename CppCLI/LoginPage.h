@@ -1,7 +1,7 @@
 #pragma once
 #include "Page.h"
 
-public ref class LoginScreen : public Page
+public ref class LoginPage : public Page
 {
 	void ButtonClicked();
 	void LoginChanged();

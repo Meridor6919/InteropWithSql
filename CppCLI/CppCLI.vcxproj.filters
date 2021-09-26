@@ -32,7 +32,7 @@
     <ClInclude Include="WinAPIWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LoginScreen.h">
+    <ClInclude Include="LoginPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Page.h">
@@ -52,7 +52,7 @@
     <ClCompile Include="WinAPIWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoginScreen.cpp">
+    <ClCompile Include="LoginPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
