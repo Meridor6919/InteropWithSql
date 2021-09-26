@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "WinAPIWindow.h"
 #include "LoginPage.h"
+#include "GlobalData.h"
 
 msclr::gcroot<Page^> global_active_page;
+msclr::gcroot<SQLConnector^> global_sql_connector;
 
 LRESULT WinAPIWindow::DefaultMsgProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
@@ -41,6 +43,13 @@ LRESULT WinAPIWindow::EventHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
 			ConnectWPFLoginPage(hwnd);
 			break;
 		}
+		default:
+		{
+			if (msg == ChangePageMsg)
+			{
+				exit(0);
+			}
+		}
 	}
 	return DefWindowProc(hwnd, msg, wparam, lparam);
 }
@@ -68,7 +77,7 @@ void WinAPIWindow::ConnectWPFLoginPage(HWND parent_window)
 	sourceParams->WindowStyle = WS_VISIBLE | WS_CHILD;
 	System::Windows::Interop::HwndSource^ source = gcnew System::Windows::Interop::HwndSource(*sourceParams);
 
-	global_active_page = gcnew LoginPage();
+	global_active_page = gcnew LoginPage(global_sql_connector, parent_window);
 	global_active_page->Init();
 
 	source->RootVisual = global_active_page->page;
@@ -76,6 +85,8 @@ void WinAPIWindow::ConnectWPFLoginPage(HWND parent_window)
 
 bool WinAPIWindow::InitWindow()
 {
+	global_sql_connector = gcnew SQLConnector();
+
 	if (!this->Register())
 	{
 		return false;

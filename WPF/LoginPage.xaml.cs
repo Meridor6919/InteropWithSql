@@ -29,7 +29,7 @@ namespace WPF
 		public void DefaultEvent() {}
 		public delegate void EventHandlerDelegate();
 		public EventHandlerDelegate[] event_ptrs = new EventHandlerDelegate[((int)Events.last)];
-
+		
 		public LoginPage()
 		{
 			for (int i = 0; i < event_ptrs.Length; i++)
@@ -41,6 +41,19 @@ namespace WPF
 		public void LoginChange(object sender, TextChangedEventArgs e) => event_ptrs[(int)Events.LoginChange]();
 		public void PasswordChange(object sender, TextChangedEventArgs e) => event_ptrs[(int)Events.PasswordChange]();
 		public void ButtonClick(object sender, RoutedEventArgs e) => event_ptrs[(int)Events.ButtonClick]();
+
+		public ref Button GetButton()
+		{
+			return ref Button;
+		}
+		public ref TextBox GetLogin()
+		{
+			return ref Login;
+		}
+		public ref TextBox GetPassword()
+		{
+			return ref Password;
+		}
 	}
 }
 

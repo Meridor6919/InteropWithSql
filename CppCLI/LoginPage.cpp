@@ -1,21 +1,50 @@
 #include "pch.h"
 #include "LoginPage.h"
+#include "WinAPIWindow.h"
+#include "GlobalData.h"
 
 void LoginPage::ButtonClicked()
 {
-	exit(0);
+	//TODO refactor this method
+	auto temp_ptr = safe_cast<WPF::LoginPage^>(page);
+	System::String^ login = temp_ptr->GetLogin()->Text;
+	System::String^ password = temp_ptr->GetPassword()->Text;
+	
+	if (sql_connector->EstablishConnection(GetConnectionString(login, password)))
+	{
+		SendMessage(main_window, ChangePageMsg, 0, 0);
+	}
+	else
+	{
+		temp_ptr->GetLogin()->Text = "Login";
+		temp_ptr->GetPassword()->Text = "Password";
+	}
 }
-
 void LoginPage::LoginChanged()
 {
-	exit(0);
+	
 }
-
 void LoginPage::PasswordChanged()
 {
-	exit(0);
+	//TODO
+	//Add * for typing password
 }
-
+System::String^ LoginPage::GetConnectionString(System::String^ login, System::String^ password)
+{
+	System::String^ conn_string = "";
+	conn_string += "Server=tcp:meridor-server.database.windows.net,1433;";
+	conn_string += "Initial Catalog=SQLProjectDatabase;";
+	conn_string += "Persist Security Info=False;";
+	conn_string += "User ID=";
+	conn_string += login + "@meridor-server;";
+	conn_string += "Password=";
+	conn_string += password + ';';
+	conn_string += "MultipleActiveResultSets=False;";
+	conn_string += "Encrypt=True;";
+	conn_string += "TrustServerCertificate=False;";
+	conn_string += "Connection Timeout=30;";
+	return conn_string;
+}
 void LoginPage::Init()
 {
 	auto temp_ptr = gcnew WPF::LoginPage();

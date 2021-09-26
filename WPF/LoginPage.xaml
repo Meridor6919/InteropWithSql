@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Height="600" Width="800"
         Background="#FF9AA1A8">
-    <TextBox HorizontalAlignment="Left" Height="23" Margin="202,197,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="379" TextChanged="LoginChange"/>
-    <TextBox HorizontalAlignment="Left" Height="23" Margin="202,261,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="379" TextChanged="PasswordChange"/>
-    <Button Content="Log in" HorizontalAlignment="Left" Margin="360,320,0,0" VerticalAlignment="Top" Width="75" Click="ButtonClick"/>
+    <TextBox Name="Login" HorizontalAlignment="Left" Height="23" Margin="202,197,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="379" TextChanged="LoginChange"/>
+    <TextBox Name="Password" HorizontalAlignment="Left" Height="23" Margin="202,261,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="379" TextChanged="PasswordChange"/>
+    <Button Name="Button" Content="Log in" HorizontalAlignment="Left" Margin="360,320,0,0" VerticalAlignment="Top" Width="75" Click="ButtonClick"/>
     <TextBlock HorizontalAlignment="Left" Margin="202,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="54" Width="480" FontSize="32" RenderTransformOrigin="0.5,0.5">
         <TextBlock.RenderTransform>
             <TransformGroup>
