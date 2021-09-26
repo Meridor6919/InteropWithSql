@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "WinAPIWindow.h"
+#include "LoginScreen.h"
 
 LRESULT WinAPIWindow::DefaultMsgProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
@@ -33,6 +34,11 @@ LRESULT WinAPIWindow::EventHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
 		{
 			PostQuitMessage(0);
 		}
+		case WM_CREATE:
+		{
+			GetHWND(hwnd);
+			break;
+		}
 	}
 	return DefWindowProc(hwnd, msg, wparam, lparam);
 }
@@ -51,6 +57,18 @@ bool WinAPIWindow::Register()
 		return false;
 	}
 	return true;
+}
+
+void WinAPIWindow::GetHWND(HWND parent_window)
+{
+	System::Windows::Interop::HwndSourceParameters^ sourceParams = gcnew System::Windows::Interop::HwndSourceParameters("LogPage", 800, 600);
+	sourceParams->ParentWindow = System::IntPtr(parent_window);
+	sourceParams->WindowStyle = WS_VISIBLE | WS_CHILD;
+	System::Windows::Interop::HwndSource^ source = gcnew System::Windows::Interop::HwndSource(*sourceParams);
+
+	auto myPage = gcnew WPF::LoginPage();
+	LoginScreen::main_window = myPage;
+	source->RootVisual = myPage;
 }
 
 bool WinAPIWindow::InitWindow()
