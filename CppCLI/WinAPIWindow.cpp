@@ -6,6 +6,7 @@
 
 msclr::gcroot<Page^> global_active_page;
 msclr::gcroot<SQLConnector^> global_sql_connector;
+msclr::gcroot< System::Windows::Interop::HwndSource^> interop_hwnd;
 
 LRESULT WinAPIWindow::DefaultMsgProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
@@ -41,14 +42,15 @@ LRESULT WinAPIWindow::EventHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
 		}
 		case WM_CREATE:
 		{
-			ConnectWPFLoginPage(hwnd);
+			InitializeWPF(hwnd);
+			SetPage<LoginPage>(hwnd);
 			break;
 		}
 		default:
 		{
 			if (msg == ChangePageMsg)
 			{
-				exit(0);
+				SetPage<QueryPage>(hwnd);
 			}
 		}
 	}
@@ -71,17 +73,12 @@ bool WinAPIWindow::Register()
 	return true;
 }
 
-void WinAPIWindow::ConnectWPFLoginPage(HWND parent_window)
+void WinAPIWindow::InitializeWPF(HWND parent_window)
 {
 	System::Windows::Interop::HwndSourceParameters^ sourceParams = gcnew System::Windows::Interop::HwndSourceParameters("Page", 800, 600);
 	sourceParams->ParentWindow = System::IntPtr(parent_window);
 	sourceParams->WindowStyle = WS_VISIBLE | WS_CHILD;
-	System::Windows::Interop::HwndSource^ source = gcnew System::Windows::Interop::HwndSource(*sourceParams);
-
-	global_active_page = gcnew QueryPage(global_sql_connector, parent_window);
-	global_active_page->Init();
-
-	source->RootVisual = global_active_page->page;
+	interop_hwnd = gcnew System::Windows::Interop::HwndSource(*sourceParams);
 }
 
 bool WinAPIWindow::InitWindow()

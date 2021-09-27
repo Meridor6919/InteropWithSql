@@ -19,6 +19,7 @@ void LoginPage::ButtonClicked()
 		temp_ptr->GetLogin()->Text = "Login";
 		temp_ptr->GetPassword()->Text = "Password";
 	}
+	SendMessage(main_window, ChangePageMsg, 0, 0);
 }
 void LoginPage::LoginChanged()
 {
@@ -38,7 +39,7 @@ System::String^ LoginPage::GetConnectionString(System::String^ login, System::St
 	conn_string += "User ID=";
 	conn_string += login + "@meridor-server;";
 	conn_string += "Password=";
-	conn_string += password + ';';
+	conn_string += password + ";";
 	conn_string += "MultipleActiveResultSets=False;";
 	conn_string += "Encrypt=True;";
 	conn_string += "TrustServerCertificate=False;";

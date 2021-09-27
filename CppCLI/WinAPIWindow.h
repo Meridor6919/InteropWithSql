@@ -19,7 +19,17 @@ class WinAPIWindow
 	LRESULT EventHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 	bool Register();
-	void ConnectWPFLoginPage(HWND parent_window);
+	void InitializeWPF(HWND parent_window);
+
+	template<class T>
+	void SetPage(HWND parent_window)
+	{
+		global_active_page = gcnew T(global_sql_connector, parent_window);
+		global_active_page->Init();
+
+		interop_hwnd->RootVisual = global_active_page->page;
+	}
+
 
 public:
 	WinAPIWindow(WinAPIWindowDesc desc) : desc(desc) {};
