@@ -12,7 +12,7 @@ struct WinAPIWindowDesc
 class WinAPIWindow
 {
 	HWND hwnd;
-	WinAPIWindowDesc desc;
+	WinAPIWindowDesc& desc;
 
 	static LRESULT CALLBACK DefaultMsgProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 	static LRESULT CALLBACK MsgRedirect(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
@@ -32,7 +32,7 @@ class WinAPIWindow
 
 
 public:
-	WinAPIWindow(WinAPIWindowDesc desc) : desc(desc) {};
+	WinAPIWindow(WinAPIWindowDesc& desc) : desc(desc) {};
 	bool InitWindow();
 	void Run();
 };

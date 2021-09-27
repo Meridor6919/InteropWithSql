@@ -19,7 +19,6 @@ void LoginPage::ButtonClicked()
 		temp_ptr->GetLogin()->Text = "Login";
 		temp_ptr->GetPassword()->Text = "Password";
 	}
-	SendMessage(main_window, ChangePageMsg, 0, 0);
 }
 void LoginPage::LoginChanged()
 {

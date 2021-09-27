@@ -21,5 +21,4 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	WinAPIWindow window(desc);
 	window.InitWindow();
 	window.Run();
-    return 0;
 }
