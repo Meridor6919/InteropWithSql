@@ -6,5 +6,5 @@ public ref class SQLConnector
 
 public:
 	bool EstablishConnection(System::String^ conn_string);
-	System::Data::SqlClient::SqlDataReader^ SendQuery(System::String^ query);
+	System::Data::SqlClient::SqlCommand^ SendQuery(System::String^ query);
 };

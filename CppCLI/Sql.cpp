@@ -20,8 +20,7 @@ bool SQLConnector::EstablishConnection(System::String^ conn_string)
 	return false;
 }
 
-System::Data::SqlClient::SqlDataReader^ SQLConnector::SendQuery(System::String^ query)
+System::Data::SqlClient::SqlCommand^ SQLConnector::SendQuery(System::String^ query)
 {
-	auto command = gcnew System::Data::SqlClient::SqlCommand(query, sql_connection);
-	return command->ExecuteReader();
+	return gcnew System::Data::SqlClient::SqlCommand(query, sql_connection);
 }

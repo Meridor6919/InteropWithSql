@@ -5,7 +5,6 @@
 
 void LoginPage::ButtonClicked()
 {
-	//TODO refactor this method
 	auto temp_ptr = safe_cast<WPF::LoginPage^>(page);
 	System::String^ login = temp_ptr->GetLogin()->Text;
 	System::String^ password = temp_ptr->GetPassword()->Text;

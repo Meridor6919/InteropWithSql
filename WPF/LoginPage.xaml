@@ -18,6 +18,6 @@
                 <RotateTransform Angle="-0.033"/>
                 <TranslateTransform/>
             </TransformGroup>
-        </TextBlock.RenderTransform><Run Text="Log"/><Run Text="g"/><Run Text="ing screen for database application"/></TextBlock>
+        </TextBlock.RenderTransform><Run Text="Log"/><Run Text="in"/><Run Text=" screen for database application"/></TextBlock>
     <TextBlock Name="Error" Foreground="Red" HorizontalAlignment="Center" Margin="315,148,332,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153" Height="18"/>
 </Grid>
