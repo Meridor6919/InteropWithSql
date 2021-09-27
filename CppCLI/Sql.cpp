@@ -7,6 +7,12 @@ bool SQLConnector::SanitizeConnectionString(const System::String^ conn_string)
 	return true;
 }
 
+bool SQLConnector::SanitizeQuery(const System::String^ query)
+{
+	//TODO implement this function
+	return true;
+}
+
 bool SQLConnector::EstablishConnection(System::String^ conn_string)
 {
 	if (!SanitizeConnectionString(conn_string))
@@ -31,19 +37,8 @@ bool SQLConnector::EstablishConnection(System::String^ conn_string)
 	return false;
 }
 
-/*
-* auto query = gcnew System::String("SELECT * FROM SalesLT.Address");
-		{
-			auto command = gcnew System::Data::SqlClient::SqlCommand(query, sql_connection);
-			sql_connection->Open();
-			{
-				{
-					System::Data::SqlClient::SqlDataReader^ reader = command->ExecuteReader();
-					if (reader->HasRows)
-					{
-						System::Console::WriteLine("{0}", reader->GetName(0));
-					}
-				}
-			}
-		}
-*/
+System::Data::SqlClient::SqlDataReader^ SQLConnector::SendQuery(System::String^ query)
+{
+	auto command = gcnew System::Data::SqlClient::SqlCommand(query, sql_connection);
+	return command->ExecuteReader();
+}

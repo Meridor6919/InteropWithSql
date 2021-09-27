@@ -9,7 +9,7 @@ void LoginPage::ButtonClicked()
 	auto temp_ptr = safe_cast<WPF::LoginPage^>(page);
 	System::String^ login = temp_ptr->GetLogin()->Text;
 	System::String^ password = temp_ptr->GetPassword()->Text;
-	
+
 	if (sql_connector->EstablishConnection(GetConnectionString(login, password)))
 	{
 		SendMessage(main_window, ChangePageMsg, 0, 0);

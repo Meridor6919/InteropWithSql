@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
         Height="600" Width="800" Background="#FF9AA1A8">
-    <DataGrid Name="DataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="87,119,77,31" >
+    <DataGrid Name="DataGrid" ItemsSource="{Binding}" AutoGenerateColumns="True" Margin="51,119,53,31" >
 
     </DataGrid>
     <TextBox Name="SQLQuery" HorizontalAlignment="Left" Height="23" Margin="87,92,0,0" TextWrapping="Wrap" Text="SELECT * FROM SalesLT.Address" VerticalAlignment="Top" Width="517" TextChanged="SQLQueryChange"/>

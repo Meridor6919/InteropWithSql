@@ -8,4 +8,6 @@ public ref class SQLConnector
 
 public:
 	bool EstablishConnection(System::String^ conn_string);
+	bool SanitizeQuery(const System::String^ query);
+	System::Data::SqlClient::SqlDataReader^ SendQuery(System::String^ query);
 };
