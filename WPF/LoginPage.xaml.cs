@@ -53,6 +53,10 @@ namespace WPF
 		{
 			return ref Password;
 		}
+		public ref TextBlock GetError()
+		{
+			return ref Error;
+		}
 	}
 }
 

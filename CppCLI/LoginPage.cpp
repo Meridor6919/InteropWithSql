@@ -18,16 +18,18 @@ void LoginPage::ButtonClicked()
 	{
 		temp_ptr->GetLogin()->Text = "Login";
 		temp_ptr->GetPassword()->Text = "Password";
+		temp_ptr->GetError()->Text = "Incorrect login data";
 	}
 }
 void LoginPage::LoginChanged()
 {
-	
+	auto temp_ptr = safe_cast<WPF::LoginPage^>(page);
+	temp_ptr->GetError()->Text = "";
 }
 void LoginPage::PasswordChanged()
 {
-	//TODO
-	//Add * for typing password
+	auto temp_ptr = safe_cast<WPF::LoginPage^>(page);
+	temp_ptr->GetError()->Text = "";
 }
 System::String^ LoginPage::GetConnectionString(System::String^ login, System::String^ password)
 {

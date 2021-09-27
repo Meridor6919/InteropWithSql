@@ -1,25 +1,8 @@
 #include "Sql.h"
 #include "pch.h"
 
-bool SQLConnector::SanitizeConnectionString(const System::String^ conn_string)
-{
-	//TODO implement this method
-	return true;
-}
-
-bool SQLConnector::SanitizeQuery(const System::String^ query)
-{
-	//TODO implement this function
-	return true;
-}
-
 bool SQLConnector::EstablishConnection(System::String^ conn_string)
 {
-	if (!SanitizeConnectionString(conn_string))
-	{
-		return false;
-	}
-
 	auto connection_builder = gcnew System::Data::SqlClient::SqlConnection(conn_string);
 	sql_connection = gcnew System::Data::SqlClient::SqlConnection(connection_builder->ConnectionString);
 	try

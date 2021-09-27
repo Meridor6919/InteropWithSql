@@ -12,4 +12,5 @@
     <TextBox Name="SQLQuery" HorizontalAlignment="Left" Height="23" Margin="87,92,0,0" TextWrapping="Wrap" Text="SELECT * FROM SalesLT.Address" VerticalAlignment="Top" Width="517" TextChanged="SQLQueryChange"/>
     <Button Name="Button" Content="Run" HorizontalAlignment="Left" Margin="609,92,0,0" VerticalAlignment="Top" Width="115" Click="ButtonClick"/>
     <TextBlock HorizontalAlignment="Center" Margin="291,31,245,0" TextWrapping="Wrap" Text="Database Lookup" VerticalAlignment="Top" Width="264" Height="39" FontSize="32"/>
+    <TextBlock Name="Error" Foreground="Red" HorizontalAlignment="Center" Margin="87,69,560,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153" Height="18"/>
 </Grid>

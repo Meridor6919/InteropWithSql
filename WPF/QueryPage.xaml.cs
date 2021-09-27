@@ -48,5 +48,9 @@ namespace WPF
 		{
 			return ref DataGrid;
 		}
+		public ref TextBlock GetError()
+		{
+			return ref Error;
+		}
 	}
 }
